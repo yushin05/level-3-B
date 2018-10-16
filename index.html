@@ -1,0 +1,74 @@
+<!DOCTYPE html ng-app="myApp" ng-strict-di="true">
+<html lang="ru" ng-app="myApp" class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css" media="screen">
+	<link rel="stylesheet" href="css/thumbnail-gallery.css" media="screen">
+	<script src="js/angular.min.js"></script>
+	<script src="js/jquery-1.8.3.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/papaparse.min.js"></script>
+	<script src="js/app_base.js"></script>
+	<script src="js/jquery.session.js"></script>
+</head>
+<script>
+$.session.set("films","1");
+</script>
+<body ng-controller = "CsvCtrl">
+
+<div class="container">
+<div class="row">
+
+ 
+
+
+<!-- Форма Bootstrap, содержащая элемент для поиска по сайту -->
+      <div class="input-group" style="padding-top: 10px;">
+  	    <input type="text" class="form-control" placeholder="" id="search" ng-change="myFunc()" ng-model="myValue"/>
+    	  <span class="input-group-btn">
+    	    <button class="btn btn-info" type="button" data-ng-click="search()">
+	      	  <i class="glyphicon glyphicon-search"></i>
+    	    </button>
+	      </span>
+      </div>
+<!-- Конец формы -->
+	
+		
+<!-- Начало контента-->		
+<div class="col-md-12">
+<div class="box-body table-responsive">
+					 <a href="100 лучших фильмов по рейтингу.csv" download >Скачать CSV файл "100 лучших по рейтингу фильмов"</a>
+					 <!-- form start -->
+					 <p>Загрузите файл csv</p>
+					 <form role="form" class="form-horizontal" name="bulkDirectForm" method="post" enctype="multipart/form-data" novalidate>
+						 <div class="box-body">
+							 <div id="messages" class="alert alert-success" data-ng-show="messages" data-ng-bind="messages"></div>
+							 <div id="warning" class="alert alert-warning" data-ng-show="warning" data-ng-bind="warning"></div>
+							 
+							 <div class="form-group">
+								 <div class="col-sm-10">
+								 <input type="file" class="form-control" id="bulkDirectFile" placeholder="CSV file with phone numbers and amount" ng-model="prd.bulk_direct_file" required accept=".csv">
+								 </div>
+								 <div class="col-sm-2">
+								 <button type="submit" class="btn btn-block btn-info" ng-hide="myVar" data-ng-click="submitForm(bulkDirectForm)">Upload!</button>
+								 </div>
+								 <br>
+								 <br>
+								 
+							</div>
+						 </div>
+					 </form>
+	</div>
+<div class="tz-gallery" id="json">
+
+	
+</div>
+
+<!-- Конец контента -->
+    </div>
+	</div>
+</body>
+</html>
